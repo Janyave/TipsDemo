@@ -22,7 +22,7 @@
         [self initEditButtonWithSupperViewFrame:frame];
         [self initFlipButtonWithSupperViewFrame:frame];
         [self initDeleteButtonWithSupperViewFrame:frame];
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor blueColor];
     }
     return self;
 }

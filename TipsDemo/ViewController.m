@@ -12,8 +12,8 @@
 #import "ToolsView.h"
 #import "OperationView.h"
 
-#define TipWidth  60
-#define TipHeight 20
+#define TipWidth  32
+#define TipHeight 32
 
 @interface ViewController ()<TipsContainerViewDelegate, TipViewDelegate, ToolsViewDelegate, OperationViewDelegate>
 

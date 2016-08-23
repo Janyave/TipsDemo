@@ -7,21 +7,40 @@
 //
 
 #import "TipView.h"
+#define MaxTipViewWidth  100
+
+#define MaxTipViewHeight 60
+
+#define OriginTipViewWidth 32
+
+#define TextContentLeftInset 10
+
 
 @interface TipView ()
 @property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, strong) UIImageView *backGroundImageView;
 @end
 
 @implementation TipView
 
 - (instancetype)initWithFrame:(CGRect)frame{
+    frame = CGRectMake(frame.origin.x, frame.origin.y, OriginTipViewWidth, MaxTipViewHeight/2);
     self = [super initWithFrame:frame];
     if (self) {
         [self addTapGesture];
         [self addPanGesture];
-        self.backgroundColor = [UIColor greenColor];
-        self.textLabel = [[UILabel alloc] initWithFrame:self.bounds];
+//        self.backgroundColor = [UIColor greenColor];
+        
+        self.backGroundImageView = [[UIImageView alloc]initWithFrame:self.bounds];
+        UIImage *image = [UIImage imageNamed:@"tip-right"];
+        self.backGroundImageView.image = image;
+        self.backGroundImageView.contentMode = UIViewContentModeScaleToFill;
+        
+        [self addSubview:self.backGroundImageView];
+        self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(TextContentLeftInset, 0, self.bounds.size.width - TextContentLeftInset, self.bounds.size.height)];
+        self.textLabel.textColor = [UIColor whiteColor];
         [self addSubview:self.textLabel];
+        self.textLabel.numberOfLines = 0;
         self.flipLeftOrRight = YES;//默认向左翻转。
     }
     return self;
@@ -55,6 +74,67 @@
 
 - (void)editingTipWithString:(NSString *)text{
     self.textLabel.text = text;
+    
+//    CGSize size = [text boundingRectWithSize:CGSizeMake(MaxTipViewWidth * 2, 30) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size;
+   
+    CGRect frame = self.textLabel.frame;
+    self.textLabel.frame = CGRectMake(frame.origin.x, frame.origin.y, MaxTipViewWidth * 2, MaxTipViewHeight);
+    
+    [self.textLabel sizeToFit];
+    
+    CGSize size = self.textLabel.frame.size;
+    if (size.width <= MaxTipViewWidth - TextContentLeftInset) {
+        if (size.width > OriginTipViewWidth - TextContentLeftInset) {
+            CGRect bounds = self.bounds;
+            bounds.size.width = size.width + TextContentLeftInset;
+            bounds.size.height = MaxTipViewHeight/2;
+            self.bounds = bounds;
+            
+            self.backGroundImageView.frame = self.bounds;
+            
+            CGRect frame = self.textLabel.frame;
+            frame.size.width = size.width;
+            self.textLabel.frame = frame;
+        }
+    } else {
+        CGRect bounds = self.bounds;
+        bounds.size.width = MaxTipViewWidth + TextContentLeftInset;
+        bounds.size.height = MaxTipViewHeight;
+        self.bounds = bounds;
+        
+        self.backGroundImageView.frame = self.bounds;
+        
+        CGRect frame = self.textLabel.frame;
+        frame.size.height = MaxTipViewHeight;
+        frame.size.width = MaxTipViewWidth;
+        self.textLabel.frame = frame;
+    }
+    
+    
+}
+- (void)setFlipLeftOrRight:(BOOL)flipLeftOrRight{
+    _flipLeftOrRight = flipLeftOrRight;
+    
+    if (flipLeftOrRight) {
+        UIImage *image = [UIImage imageNamed:@"tip-right"];
+        self.backGroundImageView.image = image;
+        self.textLabel.frame = CGRectMake(TextContentLeftInset, 0, self.bounds.size.width - TextContentLeftInset, self.bounds.size.height);
+    } else {
+        UIImage *image = [UIImage imageNamed:@"tip-left"];
+        self.backGroundImageView.image = image;
+        self.textLabel.frame = CGRectMake(0, 0, self.bounds.size.width - TextContentLeftInset, self.bounds.size.height);
+    }
+}
+
+- (void)adjustTipViewArrowLeft{
+    
+}
+
+- (void)adjustBackgroundImageView{
+    self.backGroundImageView.frame = self.bounds;
+//    UIImage *image = self.backGroundImageView.image;
+//    UIImage *stretchImage = [image resizableImageWithCapInsets:UIEdgeInsetsMake(5, 1, 5, 1)];
+//    self.backGroundImageView.image = stretchImage;
 }
 
 - (void)doFlipTipViewWithSupperFrame:(CGRect)frame{

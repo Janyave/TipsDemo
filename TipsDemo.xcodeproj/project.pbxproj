@@ -19,6 +19,8 @@
 		69DCBF971D6407F20057C3E3 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 69DCBF951D6407F20057C3E3 /* delete.png */; };
 		69DCBF981D6407F20057C3E3 /* yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 69DCBF961D6407F20057C3E3 /* yes.png */; };
 		69DCBF9B1D640D180057C3E3 /* OperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DCBF9A1D640D180057C3E3 /* OperationView.m */; };
+		69E04B0C1D6ACF6C007EE9CA /* tip-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E04B0A1D6ACF6C007EE9CA /* tip-left.png */; };
+		69E04B0D1D6ACF6C007EE9CA /* tip-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E04B0B1D6ACF6C007EE9CA /* tip-right.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		69DCBF961D6407F20057C3E3 /* yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yes.png; sourceTree = "<group>"; };
 		69DCBF991D640D180057C3E3 /* OperationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OperationView.h; sourceTree = "<group>"; };
 		69DCBF9A1D640D180057C3E3 /* OperationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OperationView.m; sourceTree = "<group>"; };
+		69E04B0A1D6ACF6C007EE9CA /* tip-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tip-left.png"; sourceTree = "<group>"; };
+		69E04B0B1D6ACF6C007EE9CA /* tip-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tip-right.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 		69DCBF751D63F5F20057C3E3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				69E04B0A1D6ACF6C007EE9CA /* tip-left.png */,
+				69E04B0B1D6ACF6C007EE9CA /* tip-right.png */,
 				69DCBF951D6407F20057C3E3 /* delete.png */,
 				69DCBF961D6407F20057C3E3 /* yes.png */,
 				69DCBF761D63F5F20057C3E3 /* main.m */,
@@ -165,7 +171,9 @@
 				69DCBF981D6407F20057C3E3 /* yes.png in Resources */,
 				69DCBF971D6407F20057C3E3 /* delete.png in Resources */,
 				69DCBF851D63F5F20057C3E3 /* LaunchScreen.storyboard in Resources */,
+				69E04B0D1D6ACF6C007EE9CA /* tip-right.png in Resources */,
 				69DCBF821D63F5F20057C3E3 /* Assets.xcassets in Resources */,
+				69E04B0C1D6ACF6C007EE9CA /* tip-left.png in Resources */,
 				69DCBF801D63F5F20057C3E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +338,7 @@
 				69DCBF8B1D63F5F20057C3E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
