@@ -86,7 +86,7 @@
     if (size.width <= MaxTipViewWidth - TextContentLeftInset) {
         if (size.width > OriginTipViewWidth - TextContentLeftInset) {
             CGRect bounds = self.bounds;
-            bounds.size.width = size.width + TextContentLeftInset;
+            bounds.size.width = size.width + TextContentLeftInset + 4;
             bounds.size.height = MaxTipViewHeight/2;
             self.bounds = bounds;
             
@@ -94,11 +94,15 @@
             
             CGRect frame = self.textLabel.frame;
             frame.size.width = size.width;
+            frame.size.height = MaxTipViewHeight/2;
             self.textLabel.frame = frame;
         }
+        CGRect frame = self.textLabel.frame;
+        frame.size.height = MaxTipViewHeight/2;
+        self.textLabel.frame = frame;
     } else {
         CGRect bounds = self.bounds;
-        bounds.size.width = MaxTipViewWidth + TextContentLeftInset;
+        bounds.size.width = MaxTipViewWidth + TextContentLeftInset + 4;
         bounds.size.height = MaxTipViewHeight;
         self.bounds = bounds;
         
